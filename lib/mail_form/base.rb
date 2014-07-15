@@ -1,5 +1,6 @@
 module MailForm
 	class Base
+		# this allows subclasses like SampleMail < MailForm::Base to inherit
 		class_attribute :attribute_names
 		self.attribute_names = []
 		include ActiveModel::Conversion
@@ -7,6 +8,7 @@ module MailForm
 		extend ActiveModel::Translation
 		include ActiveModel::AttributeMethods
 		include ActiveModel::Validations
+		include MailForm::Validators
 
 		attribute_method_prefix 'clear_'
 
